@@ -12,6 +12,9 @@ const config = YAML.parse(fs.readFileSync(configPath, 'utf8'))
 
 async function exec () {
   try {
+    
+    config.commitMessage = process.env.COMMIT_MESSAGE
+
     const result = await new Action({
       githubEvent,
       argv: parseArgs(),
